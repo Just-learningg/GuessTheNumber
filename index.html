@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+
+
+
+    <head>
+        <title>Number Guesser</title>
+        
+        <style>
+
+            body{
+                background-color: black;
+                color: white;
+
+                font-size: 20px;
+            }
+
+            .guess{
+
+                text-align: center;
+            }
+
+            .userGuess {
+                margin-left: 40%;
+                padding: 5px 5px;
+                border-radius: 50px;
+            }
+
+            h1{
+                text-align: center;
+            }
+
+            .js-result{
+                text-align: center;
+
+            }
+
+            
+
+        </style>
+    
+    </head>
+    <body>
+        <h1>Enter a number Between 0 to 9</h1>
+        <p class=" guess">Guess the number</p>
+        <input placeholder="Enter a value" 
+        class = "userGuess" onkeydown="
+        console.log(event.key)
+        
+        if(event.key === 'Enter'){
+            getResults()
+        }
+        ">
+        <button onclick="
+        getResults()
+        ">Enter</button>
+
+        <p class = js-result></p>
+
+
+    </body>
+
+    <script>
+
+        
+        function getResults(){
+            userGuess = Number(document.querySelector(".userGuess").value) 
+            
+            if (userGuess < 0 || userGuess > 9){
+
+                document.querySelector('.js-result')
+                .innerHTML = `Please Enter a number between 0 and 9(Inclusive)`
+
+                return 
+            }
+
+            computerGuess = Math.floor(Math.random()*10)
+            
+            console.log(userGuess,computerGuess)
+
+            if (isNaN(userGuess)){
+                document.querySelector('.js-result')
+                .innerHTML = `Please Only enter a Number please!`
+                return
+            }
+
+            if(userGuess === computerGuess){
+                document.querySelector('.js-result')
+                .innerHTML = `You won! Your Guess: ${userGuess} | Computer's Guess: ${computerGuess}`
+            }else{
+                document.querySelector('.js-result')
+                .innerHTML = `You Lost! Your Guess: ${userGuess} | Computer's Guess: ${computerGuess}`
+            }
+
+          
+        }
+        
+        
+
+    </script>
+
+
+</html>
